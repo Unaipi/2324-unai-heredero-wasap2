@@ -1,7 +1,11 @@
 import React, {Component} from "react";
 import {StyleSheet, Text, View} from 'react-native';
-
-
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
+import Chats from './app/components/Chat';
+import States from './app/components/State';
+import Calls from './app/components/Call';
+import { PagerView } from 'react-native-pager-view';
 
 export default class App extends Component{
   render() {
@@ -12,11 +16,23 @@ export default class App extends Component{
             <Text style={styles.logo}>WhatsApp</Text>
           </View>
           <View style={styles.rightHeaderContainer}>
-
+          <Icon name="search" color="#fff" size={23} style={styles.icon} />
+          <Icon name="more-vert" color="#fff" size={23} style={styles.icon} />
           </View>
         </View>
         <View style={styles.contentContainer}>
-    
+          <ScrollableTabView
+            // tabBarUnderLineIcon="#fff"
+            // tabBarUnderLineStyle={{backgroundColor: "#fff"}}
+            // tabBarActiveTextColor="#fff"
+            // tabBarInactiveTextColor="#ddd"
+            // tabBarBackgroundColor="#075e54"
+          >
+          <Chats tabLabel="CHATS"/>
+          <States tabLabel="ESTADOS"/>
+          <Calls tabLabel="LLAMADAS"/>
+          </ScrollableTabView>
+
         </View>
       </View>
     )
