@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {View, Text, FlatList, ActivityIndicator} from 'react-native';
 import axios from 'axios';
 import { FAKE_CHATS } from "../../android/app/data/data";
+import ListChat from "./ListChat";
 
 export default class Chat extends Component {
 
@@ -30,8 +31,16 @@ export default class Chat extends Component {
         if(this.state.loaded){
         return (
             <FlatList
-            data={this.state.chatList}
-            renderItem={({item})=> <Text>{item.first_name}</Text>}
+                data={this.state.chatList}
+                renderItem={({item})=> (
+                    <ListChat
+                        first_name= {item.first_name}
+                        message={item.message}
+                        image={item.image}
+                        date={item.date}
+                        time={item.time}
+                    />
+        )}
             keyExtractor={item => item.id}
             />
         )

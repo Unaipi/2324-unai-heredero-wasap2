@@ -1,41 +1,52 @@
 import React, {Component} from "react";
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, Image, Alert,} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Chats from './app/components/Chat';
 import States from './app/components/State';
 import Calls from './app/components/Call';
 import { NavigationContainer } from '@react-navigation/native';
-
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import ActionButton from 'react-native-action-button';
+
 
 const Tab = createMaterialTopTabNavigator();
 
-export default class App extends Component{
- 
+
+
+export default class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      iconColor: 'white', // Color predeterminado
+    };
+  }
+
   render() {
-    return(
+    return (
+
       <View style={styles.mainContainer}>
         <View style={styles.headerContainer}>
           <View style={styles.leftHeaderContainer}>
             <Text style={styles.logo}>WhatsApp</Text>
           </View>
           <View style={styles.rightHeaderContainer}>
-            <Icon name="search" color="#fff" size={23} style={styles.icon}/>
-            <Icon name="more-vert" color="#fff" size={23} style={styles.icon}/>
+            <Icon name="search" color="#fff" size={23} style={styles.icon} />
+            <Icon name="more-vert" color="#fff" size={23} style={styles.icon} />
           </View>
         </View>
         <View style={styles.contentContainer}>
-       <NavigationContainer>
+          <NavigationContainer>
             <Tab.Navigator
               tabBarOptions={{
-                activeTintColor: 'black', // Change the color of the active tab text
-                inactiveTintColor: 'gray', // Change the color of the inactive tab text
+                activeTintColor: 'white',
+                inactiveTintColor: 'gray',
                 indicatorStyle: {
-                  backgroundColor: '#075e54', // Cambia el color de la línea indicadora
+                  backgroundColor: 'white',
                 },
                 style: {
-                  backgroundColor: '#075e54', // Change the background color of the tab bar
-                }
+                  backgroundColor: '#075e54',
+                },
               }}
             >
               <Tab.Screen name="Chats" component={Chats} />
@@ -43,14 +54,23 @@ export default class App extends Component{
               <Tab.Screen name="Calls" component={Calls} />
             </Tab.Navigator>
           </NavigationContainer>
-
         </View>
+        <ActionButton
+          buttonColor="#3F51B5"
+          onPress={this.cambiarColorSegunPantalla}
+          renderIcon={() => (
+            <Icon name="add" size={30} color={this.state.iconColor} />
+          )}
+        />
       </View>
-    )
+    );
   }
 }
 
+
+
 const styles = StyleSheet.create({
+///////
 mainContainer: {
   flex: 1,
   backgroundColor: '#F5FCFF'
