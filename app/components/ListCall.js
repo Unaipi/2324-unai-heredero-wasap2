@@ -71,11 +71,11 @@ const styles = StyleSheet.create({
         color: "#000"
     },
     dateText: {
-        fontSize: 12
+        
     },
     avatar: {
         borderRadius: 30,
         width: 60,
         height: 60
-    }
+    },
 });

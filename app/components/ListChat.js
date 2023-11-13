@@ -70,11 +70,15 @@ const styles = StyleSheet.create({
         color: "#000"
     },
     dateText: {
-        fontSize: 12
+        fontSize: 12,
+        color: "grey"
     },
     avatar: {
         borderRadius: 30,
         width: 60,
         height: 60
+    },
+    msgText: {
+        color: "grey"
     }
 });
